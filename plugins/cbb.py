@@ -4,6 +4,16 @@ from config import OWNER_ID
 from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery
 
 
+@Bot.on_message(filters.command("premium"))
+async def premium(client, message):
+    text = "✨ Unlock AD's Free Content By Joining Our Premium Channel! Click The Button Below To Join."
+    keyboard = InlineKeyboardMarkup(
+        [
+            [InlineKeyboardButton("Join Premium Channel", url="https://t.me/your_channel_link")]
+        ]
+    )
+    await message.reply_text(text, reply_markup=keyboard)
+
 
 @Bot.on_callback_query()
 async def cb_handler(client: Bot, query: CallbackQuery):
