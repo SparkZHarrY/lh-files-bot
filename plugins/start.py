@@ -12,6 +12,23 @@ madflixofficials = FILE_AUTO_DELETE
 jishudeveloper = madflixofficials
 file_auto_delete = humanize.naturaldelta(jishudeveloper)
 
+@app.on_message(filters.command("premium"))
+async def premium(client, message):
+    # Message to be sent
+    text = "✨ Unlock AD's Free Content By Joining Our Premium Channel! Click The Button Below To Join."
+
+    # Define the button with the URL
+    keyboard = InlineKeyboardMarkup(
+        [
+            [InlineKeyboardButton("Join Premium Channel", url="https://t.me/+87dqwhDPabBjMDg1")]
+        ]
+    )
+
+    # Send the message with the button
+    await message.reply_text(text, reply_markup=keyboard)
+
+if __name__ == "__main__":
+    app.run()
 
 @Bot.on_message(filters.command('start') & filters.private & subscribed)
 async def start_command(client: Client, message: Message):
