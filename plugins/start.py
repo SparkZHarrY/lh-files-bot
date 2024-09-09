@@ -13,27 +13,6 @@ jishudeveloper = madflixofficials
 file_auto_delete = humanize.naturaldelta(jishudeveloper)
 
 
-@Bot.on_message(filters.command('premium') & filters.private & subscribed)
-async def send_premium_message(message):
-    text = "✨ Unlock AD's Free Content By Joining Our Premium Channel! Click The Button Below To Join."
-    keyboard = telebot.types.InlineKeyboardMarkup(
-        [
-            [
-                telebot.types.InlineKeyboardButton(
-                    text="Join Premium Channel",
-                    url="https://t.me/+87dqwhDPabBjMDg1"
-                )
-            ]
-        ]
-    )
-    await message.reply_text(
-        text=text,
-        reply_markup=keyboard,
-        disable_web_page_preview=True,
-        quote=True
-    )
-
-
 @Bot.on_message(filters.command('start') & filters.private & subscribed)
 async def start_command(client: Client, message: Message):
     id = message.from_user.id
