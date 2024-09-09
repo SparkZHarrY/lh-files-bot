@@ -28,7 +28,7 @@ async def premium(client, message):
     await message.reply_text(text, reply_markup=keyboard)
 
 if __name__ == "__main__":
-    app.run()
+    bot.run()
 
 @Bot.on_message(filters.command('start') & filters.private & subscribed)
 async def start_command(client: Client, message: Message):
