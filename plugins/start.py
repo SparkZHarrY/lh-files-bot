@@ -143,10 +143,13 @@ async def message_handler(client: Client, message: Message):
     user_id = message.from_user.id
     now = datetime.utcnow()
 
-    # Check if user data exists and update last message time
+    # Check if user data exists and initialize if not
     if (chat_id, user_id) not in user_message_counts:
         user_message_counts[(chat_id, user_id)] = {"count": 0, "last_message": now}
-        user_data = user_message_counts[(chat_id, user_id)]  # Access user data after initialization
+    user_data = user_message_counts[(chat_id, user_id)]  # Access user data after initialization
+
+    # Rest of your code using user_data
+    # ...
 
         # Check message count and last message time difference
         message_count_exceeded = user_data["count"] >= 3
