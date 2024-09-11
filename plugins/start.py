@@ -27,7 +27,7 @@ async def premium(client, message):
 #####################################################################
 ########################################################
 @Bot.on_message(filters.command("contact"))
-async def premium(client, message):
+async def contact(client, message):
     text = "📩 For more details click the button below to contact our admin."
     keyboard = InlineKeyboardMarkup(
         [
