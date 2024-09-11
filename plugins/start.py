@@ -141,28 +141,19 @@ async def message_handler(client: Client, message: Message):
         time_difference = now - user_data["last_message"]
         time_limit_exceeded = time_difference.total_seconds() < 86400  # 24 hours in seconds
 
-    if message_count_exceeded and time_limit_exceeded:
-            # User has exceeded message limit within 24 hours
-        await message.reply_text(
-                "⚠️ You've exceeded the daily message limit. To continue using all features, please consider upgrading to premium."
-            )
-            user_message_counts[(chat_id, user_id)] = {"count": 0, "last_message": now}  # Reset message count for next day
-        return
+    # ... your existing code ...
 
-    # Update message count and last message time
-    user_data["count"] += 1
-    user_data["last_message"] = now
+if message_count_exceeded and time_limit_exceeded:
+    # User has exceeded message limit
+    await message.reply_text(
+        "⚠️ You've exceeded the daily message limit. To continue using all features, please consider upgrading to premium."
+    )
+    user_message_counts[(chat_id, user_id)] = {"count": 0, "last_message": now}  # Reset message count for next day
+    return
 
-    # Handle other message processing logic here (file sharing, etc.)
-    # ... your existing message handling code ...
-
-    # Check if the message is a command or a regular message
-    if message.text and message.text.startswith("/"):
-        # Handle commands as usual
-        # ... your command handling code ...
-        else:
-        # Handle regular messages
-        # ... your regular message handling code ...
+else:
+    # This block will be executed if the user hasn't exceeded the limit
+    # ... your existing code that handles messages without limit issues ...
 ####################################
     
 
