@@ -25,6 +25,17 @@ async def premium(client, message):
     )
     await message.reply_text(text, reply_markup=keyboard)
 #####################################################################
+########################################################
+@Bot.on_message(filters.command("contact"))
+async def premium(client, message):
+    text = "Contact Admin"
+    keyboard = InlineKeyboardMarkup(
+        [
+            [InlineKeyboardButton("Join Premium Channel", url="https://t.me/actressuniverseofficial_bot")]
+        ]
+    )
+    await message.reply_text(text, reply_markup=keyboard)
+#####################################################################
 @Bot.on_message(filters.command('start') & filters.private & subscribed)
 async def start_command(client: Client, message: Message):
     id = message.from_user.id
