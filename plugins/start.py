@@ -125,6 +125,7 @@ async def start_command(client: Client, message: Message):
         return
 ###################################################
 ###################################################
+user_message_counts = {}  # Initialize an empty dictionary
 @Bot.on_message(filters.private)
 async def message_handler(client: Client, message: Message):
     chat_id = message.chat.id
