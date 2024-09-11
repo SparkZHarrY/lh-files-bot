@@ -137,9 +137,9 @@ async def message_handler(client: Client, message: Message):
         user_data = user_message_counts[(chat_id, user_id)]
 
         # Check message count and last message time difference
-        message_count_exceeded = user_data["count"] >= 15
+        message_count_exceeded = user_data["count"] >= 5
         time_difference = now - user_data["last_message"]
-        time_limit_exceeded = time_difference.total_seconds() < 86400  # 24 hours in seconds
+        time_limit_exceeded = time_difference.total_seconds() < 60  # 24 hours in seconds
 
         if message_count_exceeded and time_limit_exceeded:
             # User has exceeded message limit within 24 hours
