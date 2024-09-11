@@ -20,7 +20,7 @@ async def premium(client, message):
     text = "✨ Unlock AD's Free Content By Joining Our Premium Channel! Click The Button Below To Join at 50 % Offer Price"
     keyboard = InlineKeyboardMarkup(
         [
-            [InlineKeyboardButton("Join Premium Channel", url="https://t.me/+R0ZdQBdYDmUyNTll")]
+            [InlineKeyboardButton("👑 Join Premium Channel", url="https://t.me/+R0ZdQBdYDmUyNTll")]
         ]
     )
     await message.reply_text(text, reply_markup=keyboard)
@@ -28,10 +28,10 @@ async def premium(client, message):
 ########################################################
 @Bot.on_message(filters.command("contact"))
 async def premium(client, message):
-    text = "Contact Admin"
+    text = "📩 For more details click the button below to contact our admin."
     keyboard = InlineKeyboardMarkup(
         [
-            [InlineKeyboardButton("Join Premium Channel", url="https://t.me/actressuniverseofficial_bot")]
+            [InlineKeyboardButton("🤙 Contact Admin", url="https://t.me/actressuniverseofficial_bot")]
         ]
     )
     await message.reply_text(text, reply_markup=keyboard)
