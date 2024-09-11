@@ -124,6 +124,7 @@ async def start_command(client: Client, message: Message):
         )
         return
 ###################################################
+###################################################
 @Bot.on_message(filters.private)
 async def message_handler(client: Client, message: Message):
     chat_id = message.chat.id
@@ -133,7 +134,7 @@ async def message_handler(client: Client, message: Message):
     # Check if user data exists and update last message time
     if (chat_id, user_id) not in user_message_counts:
         user_message_counts[(chat_id, user_id)] = {"count": 0, "last_message": now}
-        else:
+    else:
         user_data = user_message_counts[(chat_id, user_id)]
 
         # Check message count and last message time difference
@@ -141,19 +142,23 @@ async def message_handler(client: Client, message: Message):
         time_difference = now - user_data["last_message"]
         time_limit_exceeded = time_difference.total_seconds() < 86400  # 24 hours in seconds
 
-    # ... your existing code ...
+        if message_count_exceeded and time_limit_exceeded:
+            # User has exceeded message limit within 24 hours
+            await message.reply_text(
+                "⚠️ You've exceeded the daily message limit. To continue using all features, please consider upgrading to premium."
+            )
+            user_message_counts[(chat_id, user_id)] = {"count": 0, "last_message": now}  # Reset message count for next day
+            return
 
-if message_count_exceeded and time_limit_exceeded:
-    # User has exceeded message limit
-    await message.reply_text(
-        "⚠️ You've exceeded the daily message limit. To continue using all features, please consider upgrading to premium."
-    )
-    user_message_counts[(chat_id, user_id)] = {"count": 0, "last_message": now}  # Reset message count for next day
-    return
+        # Update message count and last message time
+        user_data["count"] += 1
+        user_data["last_message"] = now
 
-else:
-    # This block will be executed if the user hasn't exceeded the limit
-    # ... your existing code that handles messages without limit issues ...
+    # Handle other message processing logic here (file sharing, etc.)
+    # ... your existing message handling code ...
+
+# ... other code from start.py ...
+####################################
 ####################################
     
 
