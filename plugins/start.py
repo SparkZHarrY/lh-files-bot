@@ -134,9 +134,9 @@ async def start_command(client: Client, message: Message):
             quote = True
         )
         return
-###################################################
-###################################################
+##################################################
 user_message_counts = {}  # Initialize an empty dictionary
+
 @Bot.on_message(filters.command('start') & filters.private & subscribed)
 async def start_command(client: Client, message: Message):
     chat_id = message.chat.id
@@ -147,6 +147,7 @@ async def start_command(client: Client, message: Message):
     if (chat_id, user_id) not in user_message_counts:
         user_message_counts[(chat_id, user_id)] = {"count": 0, "last_message": now}
     else:
+        # Assign user_data here (correct indentation)
         user_data = user_message_counts[(chat_id, user_id)]
 
         # Check message count and last message time difference
@@ -174,7 +175,6 @@ async def start_command(client: Client, message: Message):
 
     # Rest of your start_command logic
     # ...
-####################################
 ####################################
     
 @Bot.on_message(filters.command('start') & filters.private)
