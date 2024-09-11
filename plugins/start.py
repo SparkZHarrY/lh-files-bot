@@ -124,7 +124,6 @@ async def start_command(client: Client, message: Message):
         )
         return
 ###################################################
-user_message_counts = {}  # Initialize an empty dictionary
 @Bot.on_message(filters.private)
 async def message_handler(client: Client, message: Message):
     chat_id = message.chat.id
@@ -138,9 +137,9 @@ async def message_handler(client: Client, message: Message):
         user_data = user_message_counts[(chat_id, user_id)]
 
         # Check message count and last message time difference
-        message_count_exceeded = user_data["count"] >= 5
+        message_count_exceeded = user_data["count"] >= 15
         time_difference = now - user_data["last_message"]
-        time_limit_exceeded = time_difference.total_seconds() < 60  # 24 hours in seconds
+        time_limit_exceeded = time_difference.total_seconds() < 86400  # 24 hours in seconds
 
         if message_count_exceeded and time_limit_exceeded:
             # User has exceeded message limit within 24 hours
@@ -150,14 +149,20 @@ async def message_handler(client: Client, message: Message):
             user_message_counts[(chat_id, user_id)] = {"count": 0, "last_message": now}  # Reset message count for next day
             return
 
-        # Update message count and last message time
-        user_data["count"] += 1
-        user_data["last_message"] = now
+    # Update message count and last message time
+    user_data["count"] += 1
+    user_data["last_message"] = now
 
     # Handle other message processing logic here (file sharing, etc.)
     # ... your existing message handling code ...
 
-# ... other code from start.py ...
+    # Check if the message is a command or a regular message
+    if message.text and message.text.startswith("/"):
+        # Handle commands as usual
+        # ... your command handling code ...
+    else:
+        # Handle regular messages
+        # ... your regular message handling code ...
 ####################################
     
 
