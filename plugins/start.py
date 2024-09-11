@@ -137,45 +137,43 @@ async def start_command(client: Client, message: Message):
 ###################################################
 ###################################################
 user_message_counts = {}  # Initialize an empty dictionary
-@Bot.on_message(filters.private)
-async def message_handler(client: Client, message: Message):
-  chat_id = message.chat.id
-  user_id = message.from_user.id
-  now = datetime.utcnow()
-    
-# Rest of your code using user_data
+@Bot.on_message(filters.command('start') & filters.private & subscribed)
+async def start_command(client: Client, message: Message):
+    chat_id = message.chat.id
+    user_id = message.from_user.id
+    now = datetime.utcnow()
 
-  if (chat_id, user_id) not in user_message_counts:
-    user_message_counts[(chat_id, user_id)] = {"count": 0, "last_message": now}
-  else:
-    user_data = user_message_counts[(chat_id, user_id)]
-    message_count_exceeded = user_data["count"] >= 3
-    # ... rest of your code using user_data and message_count_exceeded
+    # Check if user data exists and update last message time
+    if (chat_id, user_id) not in user_message_counts:
+        user_message_counts[(chat_id, user_id)] = {"count": 0, "last_message": now}
+    else:
+        user_data = user_message_counts[(chat_id, user_id)]
 
-  # Check message count and last message time difference
-  message_count_exceeded = user_data["count"] >= 3
-  time_difference = now - user_data["last_message"]
-  time_limit_exceeded = time_difference.total_seconds() < 86400  # 24 hours in seconds
+        # Check message count and last message time difference
+        message_count_exceeded = user_data["count"] >= 3
+        time_difference = now - user_data["last_message"]
+        time_limit_exceeded = time_difference.total_seconds() < 86400  # 24 hours in seconds
 
-  if message_count_exceeded and time_limit_exceeded:
-    # User has exceeded message limit within 24 hours
-    await message.reply_text(
-        "⚠️ You've exceeded the daily message limit. To continue using all features, please consider upgrading to premium."
-    )
+        if message_count_exceeded and time_limit_exceeded:
+            # User has exceeded message limit within 24 hours
+            text = "✨ Unlock AD's Free Content By Joining Our Premium Channel! Click The Button Below To Join at 50 % Offer Price"
+            keyboard = InlineKeyboardMarkup(
+                [
+                    [InlineKeyboardButton("Join Premium Channel", url="https://t.me/+R0ZdQBdYDmUyNTll")]
+                ]
+            )
+            await message.reply_text(
+                text, reply_markup=keyboard
+            )
+            user_message_counts[(chat_id, user_id)] = {"count": 0, "last_message": now}  # Reset message count for next day
+            return
 
-    # Automatically reply with the premium content link
-    premium_link = "https://t.me/+R0ZdQBdYDmUyNTll"  # Replace with your actual premium link
-    await message.reply_text(f"Join our premium channel: {premium_link}")
+    # Update message count and last message time
+    user_data["count"] += 1
+    user_data["last_message"] = now
 
-    user_message_counts[(chat_id, user_id)] = {"count": 0, "last_message": now}  # Reset message count for next day
-    return
-
-  # Update message count and last message time
-  user_data["count"] += 1
-  user_data["last_message"] = now
-
-  # Handle other message processing logic here (file sharing, etc.)
-  # ... your existing message handling code ...
+    # Rest of your start_command logic
+    # ...
 ####################################
 ####################################
     
