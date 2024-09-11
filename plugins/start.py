@@ -133,7 +133,7 @@ async def message_handler(client: Client, message: Message):
     # Check if user data exists and update last message time
     if (chat_id, user_id) not in user_message_counts:
         user_message_counts[(chat_id, user_id)] = {"count": 0, "last_message": now}
-    else:
+        else:
         user_data = user_message_counts[(chat_id, user_id)]
 
         # Check message count and last message time difference
@@ -147,7 +147,7 @@ async def message_handler(client: Client, message: Message):
                 "⚠️ You've exceeded the daily message limit. To continue using all features, please consider upgrading to premium."
             )
             user_message_counts[(chat_id, user_id)] = {"count": 0, "last_message": now}  # Reset message count for next day
-    return
+        return
 
     # Update message count and last message time
     user_data["count"] += 1
@@ -160,7 +160,7 @@ async def message_handler(client: Client, message: Message):
     if message.text and message.text.startswith("/"):
         # Handle commands as usual
         # ... your command handling code ...
-    else:
+        else:
         # Handle regular messages
         # ... your regular message handling code ...
 ####################################
