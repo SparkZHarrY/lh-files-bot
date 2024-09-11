@@ -143,12 +143,6 @@ async def start_command(client: Client, message: Message):
     user_id = message.from_user.id
     now = datetime.utcnow()
 
-    @Bot.on_message(filters.command('start') & filters.private & subscribed)
-async def start_command(client: Client, message: Message):
-    chat_id = message.chat.id
-    user_id = message.from_user.id
-    now = datetime.utcnow()
-
     # Check if user data exists and update last message time
     if (chat_id, user_id) not in user_message_counts:
         user_message_counts[(chat_id, user_id)] = {"count": 0, "last_message": now}
