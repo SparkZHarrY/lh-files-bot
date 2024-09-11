@@ -142,7 +142,15 @@ async def message_handler(client: Client, message: Message):
   chat_id = message.chat.id
   user_id = message.from_user.id
   now = datetime.utcnow()
-  
+
+user_data = {}  # Initialize an empty dictionary
+if (chat_id, user_id) not in user_message_counts:
+    user_message_counts[(chat_id, user_id)] = {"count": 0, "last_message": now}
+else:
+    user_data = user_message_counts[(chat_id, user_id)]  # Or keep using existing data
+
+# Rest of your code using user_data
+
   if (chat_id, user_id) not in user_message_counts:
     user_message_counts[(chat_id, user_id)] = {"count": 0, "last_message": now}
   else:
