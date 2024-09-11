@@ -14,6 +14,17 @@ madflixofficials = FILE_AUTO_DELETE
 jishudeveloper = madflixofficials
 file_auto_delete = humanize.naturaldelta(jishudeveloper)
 
+########################################################
+@Bot.on_message(filters.command("premium"))
+async def premium(client, message):
+    text = "✨ Unlock AD's Free Content By Joining Our Premium Channel! Click The Button Below To Join at 50 % Offer Price"
+    keyboard = InlineKeyboardMarkup(
+        [
+            [InlineKeyboardButton("Join Premium Channel", url="https://t.me/+R0ZdQBdYDmUyNTll")]
+        ]
+    )
+    await message.reply_text(text, reply_markup=keyboard)
+#####################################################################
 
 @Bot.on_message(filters.command('start') & filters.private & subscribed)
 async def start_command(client: Client, message: Message):
@@ -161,19 +172,6 @@ async def message_handler(client: Client, message: Message):
 # ... other code from start.py ...
 ####################################
 ####################################
-    
-
-@Bot.on_message(filters.command("premium"))
-async def premium(client, message):
-    text = "✨ Unlock AD's Free Content By Joining Our Premium Channel! Click The Button Below To Join at 50 % Offer Price"
-    keyboard = InlineKeyboardMarkup(
-        [
-            [InlineKeyboardButton("Join Premium Channel", url="https://t.me/+R0ZdQBdYDmUyNTll")]
-        ]
-    )
-    await message.reply_text(text, reply_markup=keyboard)
-
-    
     
 @Bot.on_message(filters.command('start') & filters.private)
 async def not_joined(client: Client, message: Message):
