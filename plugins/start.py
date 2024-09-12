@@ -20,7 +20,7 @@ async def premium(client, message):
     text = "✨ Unlock AD's Free Content By Joining Our Premium Channel! Click The Button Below To Join at 50 % Offer Price"
     keyboard = InlineKeyboardMarkup(
         [
-            [InlineKeyboardButton("👑 Join Premium Channel", url="https://t.me/+R0ZdQBdYDmUyNTll")]
+            [InlineKeyboardButton("👑 Join Premium Channel", url="https://t.me/+SW-ahAXYymFhNDE1")]
         ]
     )
     await message.reply_text(text, reply_markup=keyboard)
@@ -31,7 +31,7 @@ async def contact(client, message):
     text = "📩 For more details click the button below to contact our admin."
     keyboard = InlineKeyboardMarkup(
         [
-            [InlineKeyboardButton("🤙 Contact Admin", url="https://t.me/actressuniverseofficial_bot")]
+            [InlineKeyboardButton("🤙 Contact Admin", url="https://t.me/Leakes_Hub_Admin_Bot")]
         ]
     )
     await message.reply_text(text, reply_markup=keyboard)
@@ -247,4 +247,4 @@ async def delete_files(messages, client, k):
         except Exception as e:
             print(f"The attempt to delete the media {msg.id} was unsuccessful: {e}")
     # await client.send_message(messages[0].chat.id, "Your Video / File Is Successfully Deleted ✅")
-    await k.edit_text("The Previous File Is Successfully Deleted ✅ Re-Download it From @actressuniverseofficial")
+    await k.edit_text("The Previous File Is Successfully Deleted ✅ Re-Download it From @leakes_hub")
