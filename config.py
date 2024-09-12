@@ -5,24 +5,24 @@ from logging.handlers import RotatingFileHandler
 
 
 
-BOT_TOKEN = os.environ.get("BOT_TOKEN", "7441112276:AAHQiEMr3ZP0SiLpbaMcAcUNhuAJiqWovNc")
+BOT_TOKEN = os.environ.get("BOT_TOKEN", "7316871607:AAHW_HmS4K5g0kVtBHkOvzWJNTI5nLRJz-M")
 API_ID = int(os.environ.get("API_ID", "26132893"))
 API_HASH = os.environ.get("API_HASH", "5f8cc9ef2e106d963607432c1a21bbc8")
 
 
 OWNER_ID = int(os.environ.get("OWNER_ID", "847244116"))
 DB_URL = os.environ.get("DB_URL", "mongodb+srv://AU:o3LDfsISb1ukWNJX@cluster0.1wvzx.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
-DB_NAME = os.environ.get("DB_NAME", "actressuniverse-files-bot")
+DB_NAME = os.environ.get("DB_NAME", "leakes-hub-files-bot")
 
 
-CHANNEL_ID = int(os.environ.get("CHANNEL_ID", "-1002198571183"))
-FORCE_SUB_CHANNEL = int(os.environ.get("FORCE_SUB_CHANNEL", "-1001119766850"))
+CHANNEL_ID = int(os.environ.get("CHANNEL_ID", "-1002224878779"))
+FORCE_SUB_CHANNEL = int(os.environ.get("FORCE_SUB_CHANNEL", "-1002191362659"))
 
 
 FILE_AUTO_DELETE = int(os.getenv("FILE_AUTO_DELETE", "86400")) # auto delete in seconds
 
 
-PORT = os.environ.get("PORT", "8585")
+PORT = os.environ.get("PORT", "8586")
 TG_BOT_WORKERS = int(os.environ.get("TG_BOT_WORKERS", "4"))
 
 
@@ -58,9 +58,9 @@ BOT_STATS_TEXT = "<b>BOT UPTIME :</b>\n{uptime}"
 
 USER_REPLY_TEXT = "❌Don't Send Me Messages Directly I'm Only File Share Bot !"
 
-START_MSG = os.environ.get("START_MESSAGE", "Hello {mention}\n\nI'm a Files Share Bot of @actressuniverseofficial.")
+START_MSG = os.environ.get("START_MESSAGE", "Hello {mention}\n\nI'm a Files Share Bot of @leakes_hub.")
 
-FORCE_MSG = os.environ.get("FORCE_SUB_MESSAGE", "Hello {mention}\n\n<b>You Need To Join In My Channel! To Use Me\n\nKindly Join @actressuniverseofficial</b>")
+FORCE_MSG = os.environ.get("FORCE_SUB_MESSAGE", "Hello {mention}\n\n<b>You Need To Join In My Channel! To Use Me\n\nKindly Join @leakes_hub</b>")
 
 
 
@@ -69,7 +69,7 @@ FORCE_MSG = os.environ.get("FORCE_SUB_MESSAGE", "Hello {mention}\n\n<b>You Need 
 ADMINS.append(OWNER_ID)
 ADMINS.append(847244116)
 
-LOG_FILE_NAME = "actressuniverse-files-bot.txt"
+LOG_FILE_NAME = "leakes-hub-files-bot.txt"
 
 logging.basicConfig(
     level=logging.INFO,
